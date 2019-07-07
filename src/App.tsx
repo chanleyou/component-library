@@ -3,6 +3,7 @@ import Dropdown from './components/Dropdown'
 
 const App: React.FC = () => {
   const [i, setI] = useState('')
+  const [b, setB] = useState('')
 
   return (
     <form>
@@ -65,7 +66,27 @@ const App: React.FC = () => {
           'Yam',
         ]}
       />
-      <input type="text" style={{ border: '1px solid black' }} />
+      <br />
+      <Dropdown
+        value={b}
+        changeHandler={setB}
+        options={['Red', 'Blue', 'Green', 'Yellow']}
+      />
+
+      <br />
+
+      <Dropdown
+        value={b}
+        changeHandler={setB}
+        options={['Red', 'Blue', 'Green', 'Yellow']}
+        disabled
+      />
+      <p>
+        This is a paragraph of text. This is a paragraph of text. This is a
+        paragraph of text. This is a paragraph of text. This is a paragraph of
+        text. This is a paragraph of text. This is a paragraph of text. This is
+        a paragraph of text.
+      </p>
     </form>
   )
 }

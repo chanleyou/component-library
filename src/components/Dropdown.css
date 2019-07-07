@@ -1,7 +1,8 @@
 .dropdown {
   width: 100%;
   position: relative;
-  background-color: #fff;
+  background-color: var(--background-color);
+  --dropdown-padding: 0.375rem;
 }
 
 .dropdown input {
@@ -9,7 +10,7 @@
   border-bottom: none;
   width: 100%;
   height: 100%;
-  padding: 0.25rem;
+  padding: var(--dropdown-padding);
   opacity: 0;
 }
 
@@ -20,10 +21,15 @@
 .value {
   border: 1px solid var(--border-color);
   width: 100%;
-  padding: 0.25rem;
+  padding: var(--dropdown-padding);
   position: absolute;
   top: 0;
   pointer-events: none;
+}
+
+.value.disabled {
+  color: var(--grey);
+  border-color: var(--grey);
 }
 
 input:focus + .value {
@@ -34,11 +40,12 @@ input:focus + .value {
   display: none;
   position: absolute;
   width: 100%;
-  max-height: 9.1rem;
+  max-height: calc(5 * (1.4rem + 2 * var(--dropdown-padding)));
   border: 1px solid var(--border-color);
   border-top: none;
   background-color: inherit;
   overflow-y: auto;
+  z-index: 1;
 }
 
 input:focus ~ .options,
@@ -47,7 +54,7 @@ input:focus ~ .options,
 }
 
 .item {
-  padding: 0.25rem;
+  padding: var(--dropdown-padding);
 }
 
 .item:hover,

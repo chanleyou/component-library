@@ -6,9 +6,16 @@ type Props = {
   options: string[]
   changeHandler: Function
   placeholder?: string
+  disabled?: boolean
 }
 
-const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
+const Dropdown = ({
+  value,
+  options,
+  changeHandler,
+  placeholder = '\xa0',
+  disabled,
+}: Props) => {
   const hasValue = () => value.length > 0
 
   const valueIndex = () => {
@@ -64,7 +71,7 @@ const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
     if (element.offsetParent == null) return
     let parent = element.offsetParent as HTMLElement
 
-    if (element.offsetTop > parent.scrollTop + parent.offsetHeight) {
+    if (element.offsetTop + 1 > parent.scrollTop + parent.offsetHeight) {
       element.scrollIntoView()
     } else if (element.offsetTop < parent.scrollTop) {
       element.scrollIntoView()
@@ -84,8 +91,17 @@ const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
         onFocus={focusHandler}
         onBlur={blurHandler}
         onKeyDown={controls}
+        disabled={disabled}
       />
-      <div className={hasValue() ? 'value' : 'value placeholder'}>
+      <div
+        className={
+          disabled
+            ? 'value disabled'
+            : hasValue()
+            ? 'value'
+            : 'value placeholder'
+        }
+      >
         {hasValue() ? value : placeholder}
       </div>
       <div className="options">

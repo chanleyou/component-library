@@ -33,10 +33,13 @@ input:focus {
   --dk-shadow: rgba(0, 0, 0, 0.3);
   --off-black: #222;
   --lt-grey: #eee;
+  --grey: #ccc;
   --dk-grey: #999;
   --text-color: var(--off-black);
   --border-color: var(--off-black);
+  --background-color: #fff;
   color: var(--text-color);
+  line-height: 1.4;
 }
 
 @media only screen and (min-width: 600px) {
