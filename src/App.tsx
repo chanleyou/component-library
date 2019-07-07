@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Dropdown from './components/Dropdown'
 
 const App: React.FC = () => {
+  const [i, setI] = useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <form>
+      <h1>Hello</h1>
+      <Dropdown
+        value={i}
+        changeHandler={setI}
+        placeholder="Placeholder text"
+        options={[
+          'Apple',
+          'Apricot',
+          'Asparagus',
+          'Avocado',
+          'Banana',
+          'Bean',
+          'Blueberry',
+          'Broccoli',
+          'Cabbage',
+          'Capsicum',
+          'Carrot',
+          'Cauliflower',
+          'Celery',
+          'Corn',
+          'Cherry',
+          'Cucumber',
+          'Durian',
+          'Eggplant',
+          'Garlic',
+          'Ginger',
+          'Grape',
+          'Grapefruit',
+          'Guava',
+          'Honeydew',
+          'Jackfruit',
+          'Kale',
+          'Kiwi',
+          'Lemon',
+          'Lettuce',
+          'Lime',
+          'Mango',
+          'Onion',
+          'Orange',
+          'Papaya',
+          'Pea',
+          'Pear',
+          'Peach',
+          'Pepper',
+          'Plum',
+          'Potato',
+          'Pineapple',
+          'Radish',
+          'Raspberry',
+          'Rice',
+          'Spinach',
+          'Tomato',
+          'Turnip',
+          'Rockmelon',
+          'Strawberry',
+          'Watermelon',
+          'Yam',
+        ]}
+      />
+      <input type="text" style={{ border: '1px solid black' }} />
+    </form>
+  )
 }
 
-export default App;
+export default App
