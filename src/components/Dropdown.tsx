@@ -40,6 +40,7 @@ const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
 
   const focusHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     setInput('')
+    requestAnimationFrame(scrollValueIntoView)
   }
   const blurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     if (filteredOptions().length > 0 && !filteredOptions().includes(value)) {
@@ -56,7 +57,7 @@ const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
     })
   }
 
-  useEffect(() => {
+  const scrollValueIntoView = () => {
     const element = document.querySelector<HTMLElement>('.selected.item')
 
     if (element == null) return
@@ -68,7 +69,9 @@ const Dropdown = ({ value, options, changeHandler, placeholder }: Props) => {
     } else if (element.offsetTop < parent.scrollTop) {
       element.scrollIntoView()
     }
-  }, [value])
+  }
+
+  useEffect(scrollValueIntoView, [value])
 
   return (
     <div className="dropdown">
